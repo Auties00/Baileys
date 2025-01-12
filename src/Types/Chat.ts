@@ -17,6 +17,8 @@ export type WAReadReceiptsValue = 'all' | 'none'
 
 export type WAPrivacyCallValue = 'all' | 'known'
 
+export type WAPrivacyMessagesValue = 'all' | 'contacts'
+
 /** set of statuses visible to other people; see updatePresence() in WhatsAppWeb.Send */
 export type WAPresence = 'unavailable' | 'available' | 'composing' | 'recording' | 'paused'
 
