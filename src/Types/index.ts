@@ -33,7 +33,8 @@ export enum DisconnectReason {
     restartRequired = 515,
     multideviceMismatch = 411,
     forbidden = 403,
-    unavailableService = 503
+    unavailableService = 503,
+    connectionFailure = 405
 }
 
 export type WAInitResponse = {
