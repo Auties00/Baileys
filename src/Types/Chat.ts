@@ -1,5 +1,6 @@
 import type { proto } from '../../WAProto'
 import type { AccountSettings } from './Auth'
+import type { ContactAction } from './Contact'
 import type { BufferedEventData } from './Events'
 import type { LabelActionBody } from './Label'
 import type { ChatLabelAssociationActionBody } from './LabelAssociation'
@@ -93,6 +94,7 @@ export type ChatModification =
         lastMessages: LastMessageList
     }
     | { delete: true, lastMessages: LastMessageList }
+    | { contact: ContactAction | null }
     // Label
     | { addLabel: LabelActionBody }
     // Label assosiation

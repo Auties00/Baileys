@@ -18,3 +18,9 @@ export interface Contact {
     imgUrl?: string | null
     status?: string
 }
+
+export type ContactAction = {
+    fistName: string
+    fullName: string
+    saveOnPrimaryAddressbook: boolean
+}
