@@ -7,7 +7,6 @@ import { createReadStream, createWriteStream, promises as fs, WriteStream } from
 import type { IAudioMetadata } from 'music-metadata'
 import { tmpdir } from 'os'
 import { join } from 'path'
-import type { Logger } from 'pino'
 import { Readable, Transform } from 'stream'
 import { URL } from 'url'
 import { proto } from '../../WAProto'
@@ -16,6 +15,7 @@ import { BaileysEventMap, DownloadableMessage, MediaConnInfo, MediaDecryptionKey
 import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildBuffer, jidNormalizedUser } from '../WABinary'
 import { aesDecryptGCM, aesEncryptGCM, hkdf } from './crypto'
 import { generateMessageID } from './generics'
+import { ILogger } from './logger'
 
 const getTmpFilesDirectory = () => tmpdir()
 
@@ -207,7 +207,7 @@ export async function getAudioDuration(buffer: Buffer | string | Readable) {
 /**
   referenced from and modifying https://github.com/wppconnect-team/wa-js/blob/main/src/chat/functions/prepareAudioWaveform.ts
  */
-export async function getAudioWaveform(buffer: Buffer | string | Readable, logger?: Logger) {
+export async function getAudioWaveform(buffer: Buffer | string | Readable, logger?: ILogger) {
 	try {
 		const audioDecode = (buffer: Buffer | ArrayBuffer | Uint8Array) => import('audio-decode').then(({ default: audioDecode }) => audioDecode(buffer))
 		let audioData: Buffer
@@ -290,7 +290,7 @@ export async function generateThumbnail(
 	file: string,
 	mediaType: 'video' | 'image',
 	options: {
-        logger?: Logger
+        logger?: ILogger
     }
 ) {
 	let thumbnail: string | undefined
@@ -330,7 +330,7 @@ export const getHttpStream = async(url: string | URL, options: AxiosRequestConfi
 
 type EncryptedStreamOptions = {
 	saveOriginalFileIfRequired?: boolean
-	logger?: Logger
+	logger?: ILogger
 	opts?: AxiosRequestConfig
 }
 

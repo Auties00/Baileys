@@ -1,10 +1,10 @@
 import { randomBytes } from 'crypto'
 import NodeCache from 'node-cache'
-import type { Logger } from 'pino'
 import { DEFAULT_CACHE_TTLS } from '../Defaults'
 import type { AuthenticationCreds, CacheStore, SignalDataSet, SignalDataTypeMap, SignalKeyStore, SignalKeyStoreWithTransaction, TransactionCapabilityOptions } from '../Types'
 import { Curve, signedKeyPair } from './crypto'
 import { delay, generateRegistrationId } from './generics'
+import { ILogger } from './logger'
 
 /**
  * Adds caching capability to a SignalKeyStore
@@ -14,7 +14,7 @@ import { delay, generateRegistrationId } from './generics'
  */
 export function makeCacheableSignalKeyStore(
 	store: SignalKeyStore,
-	logger: Logger,
+	logger: ILogger,
 	_cache?: CacheStore
 ): SignalKeyStore {
 	const cache = _cache || new NodeCache({
@@ -83,7 +83,7 @@ export function makeCacheableSignalKeyStore(
  */
 export const addTransactionCapability = (
 	state: SignalKeyStore,
-	logger: Logger,
+	logger: ILogger,
 	{ maxCommitRetries, delayBetweenTriesMs }: TransactionCapabilityOptions
 ): SignalKeyStoreWithTransaction => {
 	// number of queries made to the DB during the transaction
