@@ -169,6 +169,7 @@ const processMessage = async(
 	const isRealMsg = isRealMessage(message, meId)
 
 	if(isRealMsg) {
+		chat.messages = [{ message }]
 		chat.conversationTimestamp = toNumber(message.messageTimestamp)
 		// only increment unread count if not CIPHERTEXT and from another person
 		if(shouldIncrementChatUnread(message)) {
