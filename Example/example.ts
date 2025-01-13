@@ -1,5 +1,5 @@
 import { Boom } from '@hapi/boom'
-import NodeCache from 'node-cache'
+import NodeCache from '@cacheable/node-cache'
 import readline from 'readline'
 import makeWASocket, { AnyMessageContent, BinaryInfo, delay, DisconnectReason, downloadAndProcessHistorySyncNotification, encodeWAM, fetchLatestBaileysVersion, getAggregateVotesInPollMessage, getHistoryMsg, isJidNewsletter, makeCacheableSignalKeyStore, makeInMemoryStore, proto, useMultiFileAuthState, WAMessageContent, WAMessageKey } from '../src'
 //import MAIN_LOGGER from '../src/Utils/logger'

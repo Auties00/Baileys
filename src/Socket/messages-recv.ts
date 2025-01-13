@@ -1,7 +1,7 @@
 
 import { Boom } from '@hapi/boom'
 import { randomBytes } from 'crypto'
-import NodeCache from 'node-cache'
+import NodeCache from '@cacheable/node-cache'
 import { proto } from '../../WAProto'
 import { DEFAULT_CACHE_TTLS, KEY_BUNDLE_TYPE, MIN_PREKEY_COUNT } from '../Defaults'
 import { MessageReceiptType, MessageRelayOptions, MessageUserReceipt, SocketConfig, WACallEvent, WAMessageKey, WAMessageStatus, WAMessageStubType, WAPatchName } from '../Types'
